@@ -1,5 +1,3 @@
-import os
-from dotenv import load_dotenv
 import io
 import json
 import tkinter
@@ -90,9 +88,7 @@ class Tube:
         indx = self.id.find("=")
         id2 = self.id[indx +1:]
         
-        load_dotenv()
-        api = os.environ['API_KEY']
-        self.url =f"https://www.googleapis.com/youtube/v3/videos?id={id2}&key={api}&part=snippet"
+        self.url =f"https://www.googleapis.com/youtube/v3/videos?id={id2}&key={YourApiKeyHere}&part=snippet"
             
         
         res = requests.get(self.url)
@@ -132,7 +128,7 @@ class Tube:
                 
         def aa(imges,word="オリジナル"):
             if comb == word:
-                imges.save(f"/../../../image/{a_z}.jpg",quality=95)
+                imges.save(f"/home/s22017/PythonApp-ReUpload/image/{a_z}.jpg",quality=95)
                 
         Messagebox = tkinter.messagebox.askquestion('確認','本当に保存しますか？', icon='warning')
         if Messagebox == 'yes': 
@@ -207,7 +203,7 @@ class MP3:
         
         ydl_opts = {
     'format': 'bestaudio/best',
-    'outtmpl':  "/home/s22017/Desktop/try/PythonApplication/src/music/" + '%(title)s'+'.%(ext)s',
+    'outtmpl':  "/home/s22017/PythonApp-ReUpload/music/" + '%(title)s'+'.%(ext)s',
     'postprocessors': [
         {'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
